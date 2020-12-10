@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'data/LucidaBright-DemiItalic-16.vlw';
+  src: url('data/LucidaBright-DemiItalic-16.ttf');
+}
+
+body {
+  margin: auto;
+  text-align: center;
+}
+
+canvas:focus {
+  outline: 0;
+}

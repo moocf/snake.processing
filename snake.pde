@@ -1,3 +1,17 @@
+/* @pjs preload="data\snake_body_0.png"; */
+/* @pjs preload="data\snake_body_1.png"; */
+/* @pjs preload="data\snake_body_2.png"; */
+/* @pjs preload="data\snake_body_3.png"; */
+/* @pjs preload="data\snake_head_0.png"; */
+/* @pjs preload="data\snake_head_1.png"; */
+/* @pjs preload="data\snake_head_2.png"; */
+/* @pjs preload="data\snake_head_3.png"; */
+/* @pjs preload="data\snake_tail_0.png"; */
+/* @pjs preload="data\snake_tail_1.png"; */
+/* @pjs preload="data\snake_tail_2.png"; */
+/* @pjs preload="data\snake_tail_3.png"; */
+/* @pjs font="data\LucidaBright-DemiItalic-16.ttf"; */
+
 // X, Y Location Class
 class Axes
 {
@@ -8,34 +22,34 @@ class Axes
 // Body Image Files
 class BodyImageFiles
 {
-	public String Head, Body, Tail, Ext;
+  public String Head, Body, Tail, Ext;
 }
 
 
 // Body Images
 class BodyImages
 {
-	int i;
+  int i;
 
-	public PImage Head[], Body[], Tail[];
-	public int Orients;
+  public PImage Head[], Body[], Tail[];
+  public int Orients;
   
-	BodyImages(BodyImageFiles files, int orients)
-	{
-		Head = new PImage[orients];
-		Body = new PImage[orients];
-		Tail = new PImage[orients];
-		Orients = orients;
-		if(files.Head.length() > 0)
-		    for(i=0; i<orients; i++)
-				Head[i] = loadImage(files.Head + i + files.Ext);
-		if(files.Body.length() > 0)
-		    for(i=0; i<orients; i++)
-				Body[i] = loadImage(files.Body + i + files.Ext);
-		if(files.Tail.length() > 0)
-		    for(i=0; i<orients; i++)
-				Tail[i] = loadImage(files.Tail + i + files.Ext);
-	}
+  BodyImages(BodyImageFiles files, int orients)
+  {
+    Head = new PImage[orients];
+    Body = new PImage[orients];
+    Tail = new PImage[orients];
+    Orients = orients;
+    if(files.Head.length() > 0)
+        for(i=0; i<orients; i++)
+        Head[i] = loadImage(files.Head + i + files.Ext);
+    if(files.Body.length() > 0)
+        for(i=0; i<orients; i++)
+        Body[i] = loadImage(files.Body + i + files.Ext);
+    if(files.Tail.length() > 0)
+        for(i=0; i<orients; i++)
+        Tail[i] = loadImage(files.Tail + i + files.Ext);
+  }
 }
 
 
@@ -83,7 +97,7 @@ class Snake
     int i, j;
     
     // Load the snake images
-	Img = new BodyImages(img_files, 4);
+  Img = new BodyImages(img_files, 4);
     
     // Save the position & orientation
     Position = new Axes();
@@ -204,19 +218,19 @@ void setup()
   smooth();
   
   // Load Score font 
-  ScoreFont = loadFont("LucidaBright-DemiItalic-16.vlw");
+  ScoreFont = loadFont("data/LucidaBright-DemiItalic-16.vlw");
   
   // Load Snake0
-  snakef.Head = "snake_head_";
-  snakef.Body = "snake_body_";
-  snakef.Tail = "snake_tail_";
+  snakef.Head = "data/snake_head_";
+  snakef.Body = "data/snake_body_";
+  snakef.Tail = "data/snake_tail_";
   snakef.Ext = ".png";
   pos.x = 320;
   pos.y = 240;
   step.x = 14;
   step.y = 14;
   snake0 = new Snake(snakef, pos, "ccccccccccccccccccccccccccc", step);
-  food0 = new SnakeFood("snake_tail_0.png", 1);
+  food0 = new SnakeFood("data/snake_tail_0.png", 1);
   food0.Create(step);
 }
 
@@ -255,11 +269,7 @@ void draw()
     snake0.MoveSnake(mv);
     snake0.DrawSnake();
 //    food0.Display();
-    textFont(ScoreFont);
+    textFont(ScoreFont, 16);
     fill(255);
     text("Score: -320", 500, 20);
 }
-
-
-
-
